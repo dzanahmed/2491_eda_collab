@@ -27,7 +27,7 @@ fev1_sampled
 # Activity 5 - A simple scatter plot
 
 scatterPlot_age_FEV1 <- fev1_sampled %>% ggplot(mapping=aes(x=age, y=FEV1))+
-    geom_point(color='blue')
+    geom_point(color='red')
 
 scatterPlot_age_FEV1
 
