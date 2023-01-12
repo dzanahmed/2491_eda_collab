@@ -105,18 +105,27 @@ fev_grouped_plot
 # Activity 7b - How many observations per individual?
 
 # Count the number of times that each `id` is measured and make a bar plot 
+count_by_id <- fev1_sampled %>% count(id)
 
-
+count_plot <- ggplot() + geom_col(data=count_by_id,aes(x=id,y=n),fill='dark blue') +
+  xlab('ID') +
+  ylab('No. of Observations')
+count_plot
 # Activity 7c - Incorporating height
 
 # Make a plot that shows both FEV1 and age but also includes height
+library(plotly)
+?plot_ly
+plotly::plot_ly(data=fev1_sampled,x=~age, y=~FEV1, z=~height, type="scatter3d", mode="markers",color=~FEV1)
 
+fev_al_plot <- ggplot(data=fev1_sampled,aes(x=age,y=FEV1,color=height)) + geom_point()
+fev_al_plot
 
 # Activity 7d - skimr
 
 # Use skimr::skim() to generate a summary table of the data.
 # You'll need to install skimr if you don't already have it
-
+library(skimr)
 
 # Activity 7e - GGally
 
