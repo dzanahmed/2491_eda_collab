@@ -70,7 +70,9 @@ scatterPlot_age_FEV1 # To preview the modified fancy plot
 
 # Add a smooth line of best fit to the plot. 
 
-scatterPlot_age_FEV1 + geom_smooth(method = 'loess')
+scatterPlot_age_FEV1 <- scatterPlot_age_FEV1 + geom_smooth(method = 'loess')
+
+scatterPlot_age_FEV1
 
 # Activity 7 -----
 
@@ -78,9 +80,13 @@ scatterPlot_age_FEV1 + geom_smooth(method = 'loess')
 
 # Determine a way to highlight which observations belong to the same individual in your plot
 
+scatterPlot_age_FEV1 + geom_point(mapping=aes(color=id))
+
 ## Activity 7b - How many observations per individual? -----
 
 # Count the number of times that each `id` is measured and make a bar plot 
+
+fev1_sampled |> group_by(id) |> count()
 
 ## Activity 7c - Incorporating height -----
 
