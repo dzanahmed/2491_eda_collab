@@ -38,15 +38,11 @@ cor.test(fev1_sampled$age, fev1_sampled$FEV1)
 
 # Build a plot that shows the relationship between FEV1 and age
 
-<<<<<<< HEAD
-theme_set(theme_minimal())
-=======
 ### Dzan: It's the scatter plot shown above and improved below!
 
 # Activity 6 - Improving the plot -----
 
 theme_set(theme_classic())
->>>>>>> dzan
 
 # Add meaningful labels for the $x$ and $y$ axes, including units, and change the plot's colour theme from the default.
 
