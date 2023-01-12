@@ -37,10 +37,21 @@ scatterPlot_age_FEV1
 fev1 %>% summarise(cor(age,FEV1))
 
 # Build a plot that shows the relationship between FEV1 and age
+fev1_plot <- ggplot(data = fev1_sampled, 
+                    aes(x = age, y = FEV1)) +
+  geom_point()
+
+fev1_plot
+
+# Activity 6 - Improving the plot
+
+# Add meaningful labels for the $x$ and $y$ axes, including units, and change the plot's colour theme from the default.
+
+# Add a smooth line of best fit to the plot. 
 
 theme_set(theme_classic())
 
-scatterPlot_age_FEV1 +
+fev1_plot +
     geom_point(aes(alpha = 0.3)) +
     geom_smooth(method = 'loess') +
     ggtitle("Correlation between age and FEV1") +
@@ -62,27 +73,35 @@ scatterPlot_age_FEV1 +
         )
     )
 
-
-fev1_plot <- ggplot(data = fev1_sampled, 
-                    aes(x = ..., y = ...)) +
-    geom_point()
-
-fev1_plot
-
-# Activity 6 - Improving the plot
-
-# Add meaningful labels for the $x$ and $y$ axes, including units, and change the plot's colour theme from the default.
-
-# Add a smooth line of best fit to the plot. 
-
-
 # Activity 7
 
 # Activity 7a - Showing further structure
 
 # Determine a way to highlight which observations belong to the same individual in your plot
+fev_grouped_plot <- ggplot(data = fev1_sampled, 
+                      aes(x = age, y = FEV1)) +
+  geom_point(aes(color=id)) +
+  geom_smooth(method = 'loess') +
+  ggtitle("Correlation between age and FEV1") +
+  xlab("Age (years)") +
+  ylab("FEV1 (liters)") +
+  scale_x_continuous(limits = c(5, 20), breaks = seq(5, 20, 5)) +
+  scale_y_continuous(limits = c(0, 5), breaks = seq(0, 5, 1)) +
+  theme(
+    legend.position = "bottom",
+    plot.title = element_text(
+      hjust = 0.5,
+      size = 18,
+      margin = margin(
+        t = 5,
+        r = 0,
+        b = 30,
+        l = 0
+      )
+    )
+  ) + scale_color_manual(values =c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20))
 
-
+fev_grouped_plot
 # Activity 7b - How many observations per individual?
 
 # Count the number of times that each `id` is measured and make a bar plot 
