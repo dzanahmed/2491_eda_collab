@@ -34,6 +34,7 @@ scatterPlot_age_FEV1
 # Calculate the correlation between age and FEV1
 # (yes, this isn't strictly correct because there's repeated measures)
 
+fev1 %>% summarise(cor(age,FEV1))
 
 # Build a plot that shows the relationship between FEV1 and age
 
