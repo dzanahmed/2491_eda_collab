@@ -27,13 +27,14 @@ fev1_sampled
 # Activity 5 - A simple scatter plot
 
 scatterPlot_age_FEV1 <- fev1_sampled %>% ggplot(mapping=aes(x=age, y=FEV1))+
-    geom_point(color='red')
+    geom_point(color='orange')
 
 scatterPlot_age_FEV1
 
 # Calculate the correlation between age and FEV1
 # (yes, this isn't strictly correct because there's repeated measures)
 
+cor.test(fev1_sampled$age, fev1_sampled$FEV1)
 
 # Build a plot that shows the relationship between FEV1 and age
 
@@ -48,7 +49,6 @@ scatterPlot_age_FEV1 +
     scale_x_continuous(limits = c(5, 20), breaks = seq(5, 20, 5)) +
     scale_y_continuous(limits = c(0, 5), breaks = seq(0, 5, 1)) +
     theme(
-        legend.position = "bottom",
         plot.title = element_text(
             hjust = 0.5,
             size = 18,
