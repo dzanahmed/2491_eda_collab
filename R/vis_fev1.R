@@ -37,7 +37,7 @@ scatterPlot_age_FEV1
 
 # Build a plot that shows the relationship between FEV1 and age
 
-theme_set(theme_classic())
+theme_set(theme_minimal())
 
 scatterPlot_age_FEV1 +
     geom_point(aes(alpha = 0.3)) +
