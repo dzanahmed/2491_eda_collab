@@ -24,10 +24,10 @@ fev1_sampled <- fev1 %>%
 
 fev1_sampled
 
-# Activity 5 - A simple scatter plot
+# Activity 5 - A simple scatter plot -----
 
-scatterPlot_age_FEV1 <- fev1_sampled %>% ggplot(mapping=aes(x=age, y=FEV1))+
-    geom_point(color='orange')
+scatterPlot_age_FEV1 <- fev1_sampled |>  ggplot(mapping=aes(x=age, y=FEV1))+
+    geom_point()
 
 scatterPlot_age_FEV1
 
@@ -38,11 +38,16 @@ cor.test(fev1_sampled$age, fev1_sampled$FEV1)
 
 # Build a plot that shows the relationship between FEV1 and age
 
+### Dzan: It's the scatter plot shown above and improved below!
+
+# Activity 6 - Improving the plot -----
+
 theme_set(theme_classic())
 
-scatterPlot_age_FEV1 +
+# Add meaningful labels for the $x$ and $y$ axes, including units, and change the plot's colour theme from the default.
+
+scatterPlot_age_FEV1 <- scatterPlot_age_FEV1 +
     geom_point(aes(alpha = 0.3)) +
-    geom_smooth(method = 'loess') +
     ggtitle("Correlation between age and FEV1") +
     xlab("Age (years)") +
     ylab("FEV1 (liters)") +
@@ -61,49 +66,39 @@ scatterPlot_age_FEV1 +
         )
     )
 
-
-fev1_plot <- ggplot(data = fev1_sampled, 
-                    aes(x = ..., y = ...)) +
-    geom_point()
-
-fev1_plot
-
-# Activity 6 - Improving the plot
-
-# Add meaningful labels for the $x$ and $y$ axes, including units, and change the plot's colour theme from the default.
+scatterPlot_age_FEV1 # To preview the modified fancy plot
 
 # Add a smooth line of best fit to the plot. 
 
+scatterPlot_age_FEV1 + geom_smooth(method = 'loess')
 
-# Activity 7
+# Activity 7 -----
 
-# Activity 7a - Showing further structure
+## Activity 7a - Showing further structure -----
 
 # Determine a way to highlight which observations belong to the same individual in your plot
 
-
-# Activity 7b - How many observations per individual?
+## Activity 7b - How many observations per individual? -----
 
 # Count the number of times that each `id` is measured and make a bar plot 
 
-
-# Activity 7c - Incorporating height
+## Activity 7c - Incorporating height -----
 
 # Make a plot that shows both FEV1 and age but also includes height
 
 
-# Activity 7d - skimr
+## Activity 7d - skimr -----
 
 # Use skimr::skim() to generate a summary table of the data.
 # You'll need to install skimr if you don't already have it
 
 
-# Activity 7e - GGally
+## Activity 7e - GGally -----
 
 # Generate a pairs plot with GGally::ggpairs(), for all columns except id
 # You'll need to install GGally if you don't already have it
 
-# Activity 7f - Accounting for repeat measurement
+## Activity 7f - Accounting for repeat measurement -----
 
 # Build a regression model to look at how FEV1 varies with age, accounting for the
 # structure by including a random effect mean for each id and a spline curve for
