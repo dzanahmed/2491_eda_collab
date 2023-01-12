@@ -9,9 +9,11 @@
 library(tidyverse)
 
 # read the data in
-fev1 <- read_csv("../data/fev1.csv", col_types = list('id' = 'f'))
+fev1 <- read_csv("data/fev1.csv", col_types = list('id' = 'f'))
 
 # sample the data so that we have 20 patients with more than 6 observations
+
+set.seed(10)
 
 fev1_sampled <- fev1 %>% 
     count(id) %>%
@@ -24,11 +26,41 @@ fev1_sampled
 
 # Activity 5 - A simple scatter plot
 
+scatterPlot_age_FEV1 <- fev1_sampled |> ggplot(mapping=aes(x=age, y=FEV1))+
+    geom_point()
+
+scatterPlot_age_FEV1
+
 # Calculate the correlation between age and FEV1
 # (yes, this isn't strictly correct because there's repeated measures)
 
 
 # Build a plot that shows the relationship between FEV1 and age
+
+theme_set(theme_classic())
+
+scatterPlot_age_FEV1 +
+    geom_point(aes(alpha = 0.3)) +
+    geom_smooth(method = 'loess') +
+    ggtitle("Correlation between age and FEV1") +
+    xlab("Age (years)") +
+    ylab("FEV1 (liters)") +
+    scale_x_continuous(limits = c(5, 20), breaks = seq(5, 20, 5)) +
+    scale_y_continuous(limits = c(0, 5), breaks = seq(0, 5, 1)) +
+    theme(
+        legend.position = "bottom",
+        plot.title = element_text(
+            hjust = 0.5,
+            size = 18,
+            margin = margin(
+                t = 5,
+                r = 0,
+                b = 30,
+                l = 0
+            )
+        )
+    )
+
 
 fev1_plot <- ggplot(data = fev1_sampled, 
                     aes(x = ..., y = ...)) +
