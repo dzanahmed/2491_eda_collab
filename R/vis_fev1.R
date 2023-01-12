@@ -127,10 +127,15 @@ fev_al_plot
 # You'll need to install skimr if you don't already have it
 library(skimr)
 
+skimr::skim(fev1_sampled)
+
 # Activity 7e - GGally
 
 # Generate a pairs plot with GGally::ggpairs(), for all columns except id
 # You'll need to install GGally if you don't already have it
+library(GGally)
+
+GGally::ggpairs(fev1_sampled,columns = 2:4)
 
 # Activity 7f - Accounting for repeat measurement
 
