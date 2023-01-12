@@ -143,3 +143,8 @@ GGally::ggpairs(fev1_sampled,columns = 2:4)
 # structure by including a random effect mean for each id and a spline curve for
 # the effect of age
 
+#look at trajectories for each individual
+ggplot(data=fev1,aes(x=age,y=FEV1, fill=id)) + geom_line(alpha=0.2)
+
+
+
