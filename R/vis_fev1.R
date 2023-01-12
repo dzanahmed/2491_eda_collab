@@ -145,6 +145,3 @@ GGally::ggpairs(fev1_sampled,columns = 2:4)
 
 #look at trajectories for each individual
 ggplot(data=fev1,aes(x=age,y=FEV1, fill=id)) + geom_line(alpha=0.2)
-
-
-
